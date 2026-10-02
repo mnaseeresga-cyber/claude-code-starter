@@ -38,6 +38,20 @@ python src/main.py
 pytest
 ```
 
+## Three-statement model
+
+`src/three_statement.py` projects a linked income statement, balance sheet and cash flow statement for 5 years.
+
+```bash
+python src/three_statement.py      # prints the model and saves three_statement_model.csv
+```
+
+- Drivers live in `Assumptions` (growth, margins, DSO/DIO/DPO, capex, tax, debt, dividends, minimum cash).
+- Opening position lives in `OpeningBalanceSheet`; the model rejects an unbalanced opening.
+- Interest is on opening balances, so there are no circular references.
+- A revolver draws automatically to hold minimum cash and repays from excess cash.
+- Tests check that the balance sheet balances, cash ties to the cash flow statement, and equity rolls forward.
+
 ## Use with Claude Code
 
 1. Open the Claude app and click the **Code** tab.
